@@ -23,9 +23,9 @@ def display_tensorflow_serving(state):
 
     PORT = state.host_port
     state.container_name = st.text_input("Container name:", state.container_name or "")
-    state.source_path = st.text_input("Mount source path:", state.source_path or "")
-    state.target_path = st.text_input("Mount target path:", state.target_path or "")
-    state.model_config_file_path = st.text_input("Model configuration file path:", state.model_config_file_path or "")
+    state.source_path = st.text_input("Mount source path (Your model path, e.g. /home/tokim/code/tf-serving/models):", state.source_path or "")
+    state.target_path = st.text_input("Mount target path (e.g. /models):", state.target_path or "")
+    state.model_config_file_path = st.text_input("Model configuration file path (e.g. /models/models.config):", state.model_config_file_path or "")
 
     # Run command
     st.write("---")
