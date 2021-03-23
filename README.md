@@ -43,8 +43,3 @@ Above command describes the following:
 * Docker container name is tf_serving_vgg16
 * Provide the model configuration file
 * Check changes in the configuration file every 60 seconds
-
-* To run TensorFlow Docker Image including Streamlit
-~~~
-docker run -it --name docker_streamlit --network host -v /home/tokim/code/tf-serving:/tf-serving tokimeng/tfvbox:streamlit
-~~~
