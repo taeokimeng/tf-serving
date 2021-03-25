@@ -45,7 +45,7 @@ def display_tensorflow_serving_config(state):
 
     cmd = f"docker run --rm -d -p {state.host_port}:{state.container_port} --name {state.container_name} " \
             f"--mount type=bind,source={state.source_path},target={state.target_path} " \
-            f"tensorflow/serving --model_config_file={state.model_config_file_path}"
+            f"tensorflow/serving --model_config_file={state.model_config_file_path} --model_config_file_poll_wait_seconds=60"
 
     st.write("Command preview:", cmd)
 
