@@ -1,6 +1,6 @@
 import streamlit as st
 from random import randint
-from config import MODEL_VERSIONS
+from config import MODEL_VERSIONS, MODELS
 from PIL import Image
 from modules.image_classification import image_classifier
 
@@ -36,12 +36,13 @@ def display_image_classifier(state):
         else:
             cols = list(st.beta_columns(3))
 
-        version = st.radio("Select the version", MODEL_VERSIONS)
+        model = st.selectbox("Choose a model", list(MODELS.keys()))
+        version = st.radio("Select the version", MODELS[model]["Versions"])
         if st.button("Request prediction"):
             for i, img in enumerate(images_pil):
                 idx = i % 3
                 # start = time.time()
-                cols[idx].subheader(image_classifier(img, host_port, version)) # state.host_port
+                cols[idx].subheader(image_classifier(img, host_port, MODELS[model]["Name"], MODELS[model]["ImportName"], version, MODELS[model]["TargetSize"])) # state.host_port
                 # print((time.time()-start))
                 cols[idx].image(img, caption=file_names[i], width=192, use_column_width='auto')
             st.write("**Classification has been done!**")
