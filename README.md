@@ -3,8 +3,10 @@
 ## How to use
 1. Save a model and configure models/models.config.
     * Set ``` MODEL_NAME ``` and ``` MODEL_VERSION ``` from config.py.
-    * Run model.py to save the model.
-    
+    * Run model.py to save a model.
+   
+2. Update config.py and models/models.config according to the generated model.
+
 2. Run TensorFlow Docker Image including Streamlit. (It allows you to use docker command inside a container and to connect with host network.)
     * /home/tokim/code/tf-serving should be your directory path.
     * tokimeng/tf:0.2 should be the Docker Image name you want to use.
@@ -13,7 +15,7 @@
 docker run -it --network host --name serving_manager -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v /home/tokim/code/tf-serving:/tf-serving tokimeng/tf:0.2 bash
 ~~~
 
-3. Go to the directory and run Streamlit application. (terminal in the container)
+3. Go to the directory and run Streamlit application. (inside container)
 ~~~
 cd /tf-serving
 streamlit run app.py
