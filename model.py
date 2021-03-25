@@ -1,15 +1,25 @@
 from tensorflow.keras.applications.vgg16 import VGG16
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.vgg16 import preprocess_input, decode_predictions
+from tensorflow.keras.applications.inception_v3 import InceptionV3
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.inception_v3 import preprocess_input, decode_predictions
 import numpy as np
 import json
 import requests
 from config import MODEL_NAME, MODEL_VERSION
 
-model = VGG16(weights='imagenet')
+
+if MODEL_NAME == 'vgg16':
+    model = VGG16(weights='imagenet')
+    target_size = (224, 224)
+
+elif MODEL_NAME == 'inceptionv3':
+    model = InceptionV3(weights='imagenet')
+    target_size = (299, 299)
 
 img_path = 'images/lion.jpg'
-img = image.load_img(img_path, target_size=(224, 224))
+img = image.load_img(img_path, target_size=target_size)
 x = image.img_to_array(img)
 x = np.expand_dims(x, axis=0)
 x = preprocess_input(x)
