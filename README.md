@@ -1,9 +1,9 @@
 # TensorFlow Serving using Docker
 
 ## How to use
-1. Save a model and configure models/models.config
-    * Set ``` MODEL_NAME ``` and ``` MODEL_VERSION ``` from config.py
-    * Run model.py to save the model
+1. Save a model and configure models/models.config.
+    * Set ``` MODEL_NAME ``` and ``` MODEL_VERSION ``` from config.py.
+    * Run model.py to save the model.
     
 2. Run TensorFlow Docker Image including Streamlit. (It allows you to use docker command inside a container and to connect with host network.)
     * /home/tokim/code/tf-serving should be your directory path.
@@ -13,15 +13,17 @@
 docker run -it --network host --name serving_manager -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v /home/tokim/code/tf-serving:/tf-serving tokimeng/tf:0.2 bash
 ~~~
 
-3. Go to the directory and run Streamlit application (terminal in the container)
+3. Go to the directory and run Streamlit application. (terminal in the container)
 ~~~
 cd /tf-serving
 streamlit run app.py
 ~~~
 
-4. Configure and run TensorFlow Serving
+4. Configure and run TensorFlow Serving.
 
-5. Upload images and get predictions from TensorFlow Serving
+5. Upload images and get predictions from TensorFlow Serving.
+
+6. If you add some new models, you should update config.py and models/models.config.
 
 ### Command examples
 Start TensorFlow serving server
